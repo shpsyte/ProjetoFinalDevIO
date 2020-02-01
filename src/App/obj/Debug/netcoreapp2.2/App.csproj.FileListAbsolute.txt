@@ -6,6 +6,10 @@
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/bin/Debug/netcoreapp2.2/App.pdb
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/bin/Debug/netcoreapp2.2/App.Views.dll
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/bin/Debug/netcoreapp2.2/App.Views.pdb
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/bin/Debug/netcoreapp2.2/Business.dll
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/bin/Debug/netcoreapp2.2/Data.dll
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/bin/Debug/netcoreapp2.2/Data.pdb
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/bin/Debug/netcoreapp2.2/Business.pdb
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.csprojAssemblyReference.cache
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.csproj.CoreCompileInputs.cache
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.RazorAssemblyInfo.cache
@@ -28,6 +32,6 @@
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.RazorTargetAssemblyInfo.cache
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.RazorTargetAssemblyInfo.cs
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.Views.pdb
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.csproj.CopyComplete
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.dll
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.pdb
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.csproj.CopyComplete

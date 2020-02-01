@@ -6,7 +6,7 @@ namespace Business.Models {
             Id = Guid.NewGuid ();
         }
 
-        protected Guid Id { get; set; }
+        public Guid Id { get; set; }
 
     }
 }
