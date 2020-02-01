@@ -1,0 +1,8 @@
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Data/bin/Debug/netcoreapp2.2/Data.deps.json
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Data/bin/Debug/netcoreapp2.2/Data.dll
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Data/bin/Debug/netcoreapp2.2/Data.pdb
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Data/obj/Debug/netcoreapp2.2/Data.csproj.CoreCompileInputs.cache
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Data/obj/Debug/netcoreapp2.2/Data.AssemblyInfoInputs.cache
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Data/obj/Debug/netcoreapp2.2/Data.AssemblyInfo.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Data/obj/Debug/netcoreapp2.2/Data.dll
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Data/obj/Debug/netcoreapp2.2/Data.pdb
