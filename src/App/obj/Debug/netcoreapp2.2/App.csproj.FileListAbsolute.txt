@@ -47,3 +47,5 @@
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Produto/Index.g.cshtml.cs
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/_Endereco.g.cshtml.cs
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/_ListaEndereco.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/_AtualizarEndereco.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Produto/_ListaProdutos.g.cshtml.cs

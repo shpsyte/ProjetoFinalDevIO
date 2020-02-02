@@ -3006,6 +3006,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Fornecedor/_AtualizarEndereco.cshtml",
+      "TargetPath": "Views/Fornecedor/_AtualizarEndereco.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views/Shared/_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
