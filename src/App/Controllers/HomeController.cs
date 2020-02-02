@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using App.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace App.Controllers
-{
-    public class HomeController : Controller
-    {
-        public IActionResult Index()
-        {
-            return View();
+namespace App.Controllers {
+    public class HomeController : Controller {
+        public IActionResult Index () {
+            return View ();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
+        public IActionResult Privacy () {
+            return View ();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        [Route ("erro/{id:length(3,3)}")]
+        public IActionResult Error (int id) {
+            var errormodel = new ErrorViewModel () {
+                ErrorCode = id,
+                Title = "Error",
+                Message = "Erro na viewmodel"
+            };
+
+            
+
+            return View ("Error", errormodel);
         }
     }
 }
