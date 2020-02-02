@@ -1,9 +1,0 @@
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/bin/Debug/netcoreapp2.2/Business.deps.json
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/bin/Debug/netcoreapp2.2/Business.dll
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/bin/Debug/netcoreapp2.2/Business.pdb
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/obj/Debug/netcoreapp2.2/Business.csprojAssemblyReference.cache
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/obj/Debug/netcoreapp2.2/Business.csproj.CoreCompileInputs.cache
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/obj/Debug/netcoreapp2.2/Business.AssemblyInfoInputs.cache
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/obj/Debug/netcoreapp2.2/Business.AssemblyInfo.cs
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/obj/Debug/netcoreapp2.2/Business.dll
-/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/Business/obj/Debug/netcoreapp2.2/Business.pdb
