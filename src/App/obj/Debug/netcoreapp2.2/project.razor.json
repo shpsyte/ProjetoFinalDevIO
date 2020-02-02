@@ -2961,8 +2961,23 @@
   "RootNamespace": "App",
   "Documents": [
     {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Produto/Delete.cshtml",
+      "TargetPath": "Views/Produto/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Fornecedor/_Endereco.cshtml",
+      "TargetPath": "Views/Fornecedor/_Endereco.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Fornecedor/Delete.cshtml",
+      "TargetPath": "Views/Fornecedor/Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2971,13 +2986,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Produto/Details.cshtml",
+      "TargetPath": "Views/Produto/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/_ViewStart.cshtml",
       "TargetPath": "Views/_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Produto/Index.cshtml",
+      "TargetPath": "Views/Produto/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views/Shared/_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Fornecedor/Create.cshtml",
+      "TargetPath": "Views/Fornecedor/Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2988,6 +3018,11 @@
     {
       "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Home/Index.cshtml",
       "TargetPath": "Views/Home/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Fornecedor/Details.cshtml",
+      "TargetPath": "Views/Fornecedor/Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3008,6 +3043,26 @@
     {
       "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Shared/_LoginPartial.cshtml",
       "TargetPath": "Views/Shared/_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Produto/Edit.cshtml",
+      "TargetPath": "Views/Produto/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Fornecedor/Index.cshtml",
+      "TargetPath": "Views/Fornecedor/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Fornecedor/Edit.cshtml",
+      "TargetPath": "Views/Fornecedor/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Produto/Create.cshtml",
+      "TargetPath": "Views/Produto/Create.cshtml",
       "FileKind": "mvc"
     }
   ],

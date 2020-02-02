@@ -1,0 +1,146 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using App.Data;
+using App.ViewModels;
+using AutoMapper;
+using Business.Interfaces;
+using Business.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+
+namespace App.Controllers {
+    public class ProdutoController : BaseController {
+
+        private readonly IProdutoRepository _context;
+        private readonly IFornecedorRepository _fornecedor;
+
+        public ProdutoController (IProdutoRepository produto, IFornecedorRepository fornecedor, IMapper mapper) : base (mapper) {
+            _context = produto;
+            _fornecedor = fornecedor;
+        }
+
+        public async Task<IActionResult> Index () {
+            var data = _mapper.Map<IEnumerable<ProdutoViewModel>> (await _context.PegarTodosProdutos ());
+            return View (data);
+        }
+
+        public async Task<IActionResult> Details (Guid id) {
+
+            var produtoViewModel = _mapper.Map<ProdutoViewModel> (await _context.ObterPorId (id));
+
+            if (produtoViewModel == null) {
+                return NotFound ();
+            }
+
+            return View (produtoViewModel);
+        }
+
+        public async Task<IActionResult> Create () {
+            ViewData["FornecedorId"] = new SelectList (await _fornecedor.ObterTodos (), "Id", "Name");
+            return View ();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create (ProdutoViewModel produtoViewModel) {
+            ViewData["FornecedorId"] = new SelectList (await _fornecedor.ObterTodos (), "Id", "Name", produtoViewModel.FornecedorId);
+
+            var prefixo = Guid.NewGuid ().ToString () + "_";
+
+            if (produtoViewModel.ImageUpload != null) {
+
+                produtoViewModel.Image = await UploadImage (produtoViewModel.ImageUpload, prefixo);
+            }
+
+            if (!ModelState.IsValid) return View (produtoViewModel);
+
+            await _context.Adicionar (_mapper.Map<Produto> (produtoViewModel));
+            return RedirectToAction (nameof (Index));
+
+        }
+
+        private async Task<string> UploadImage (IFormFile arquivo, string prefixo) {
+            if (arquivo.Length <= 0) return "";
+
+            var path = Path.Combine (Directory.GetCurrentDirectory (), "wwwroot/images", prefixo + arquivo.FileName);
+
+            using (var stream = new FileStream (path, FileMode.Create)) {
+                await arquivo.CopyToAsync (stream);
+            }
+
+            return prefixo + arquivo.FileName;
+
+        }
+
+        public async Task<IActionResult> Edit (Guid id) {
+
+            var produtoViewModel = _mapper.Map<ProdutoViewModel> (await _context.ObterPorId (id));
+            if (produtoViewModel == null) {
+                return NotFound ();
+            }
+            ViewData["FornecedorId"] = new SelectList (await _fornecedor.ObterTodos (), "Id", "Document", produtoViewModel.FornecedorId);
+            return View (produtoViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit (Guid id, ProdutoViewModel produtoViewModel) {
+            if (id != produtoViewModel.Id) {
+                return NotFound ();
+            }
+            ViewData["FornecedorId"] = new SelectList (await _fornecedor.ObterTodos (), "Id", "Document", produtoViewModel.FornecedorId);
+
+            var produtoAtualizacao = await _context.ObterPorId (id);
+            produtoViewModel.FornecedorId = produtoAtualizacao.FornecedorId;
+            produtoViewModel.Image = produtoAtualizacao.Image;
+
+            if (!ModelState.IsValid) return View (produtoViewModel);
+
+            if (produtoViewModel.ImageUpload != null) {
+                string pre = Guid.NewGuid () + "-";
+
+                produtoAtualizacao.Image = await UploadImage (produtoViewModel.ImageUpload, pre);
+            }
+
+            produtoAtualizacao.Name = produtoViewModel.Name;
+            produtoAtualizacao.Price = produtoViewModel.Price;
+
+            var produto = _mapper.Map<Produto> (produtoAtualizacao);
+
+            try {
+                await _context.Atualizar (produto);
+
+            } catch (DbUpdateConcurrencyException) {
+                throw;
+            }
+            return RedirectToAction (nameof (Index));
+
+        }
+
+        public async Task<IActionResult> Delete (Guid id) {
+
+            var produtoViewModel = _mapper.Map<ProdutoViewModel> (await _context.ObterPorId (id));
+
+            if (produtoViewModel == null) {
+                return NotFound ();
+            }
+
+            return View (produtoViewModel);
+        }
+
+        [HttpPost, ActionName ("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed (Guid id) {
+
+            var produto = await _context.ObterPorId (id);
+            await _context.Remover (produto);
+            return RedirectToAction (nameof (Index));
+        }
+
+    }
+}

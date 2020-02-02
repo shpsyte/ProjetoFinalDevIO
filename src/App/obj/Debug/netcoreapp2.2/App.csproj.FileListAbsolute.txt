@@ -35,3 +35,14 @@
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.csproj.CopyComplete
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.dll
 /media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/App.pdb
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/Create.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/Delete.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/Details.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/Edit.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/Index.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Produto/Create.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Produto/Delete.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Produto/Details.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Produto/Edit.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Produto/Index.g.cshtml.cs
+/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/obj/Debug/netcoreapp2.2/Razor/Views/Fornecedor/_Endereco.g.cshtml.cs

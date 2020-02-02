@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Repositories {
     public class EnderecoRepository : Repository<Endereco>, IEnderecoRepository {
-        public EnderecoRepository (MeuDbContext context, DbSet<Endereco> set) : base (context, set) { }
+        public EnderecoRepository (MeuDbContext context) : base (context) { }
 
         public async Task<Endereco> PegarEnderecoFornecedor (Guid fornecedorId) {
             return await _set.Where (a => a.FornecedorId == fornecedorId).FirstOrDefaultAsync ();

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using App.AttributeValidations;
 using App.Data;
 using AutoMapper;
 using Business.Interfaces;
@@ -14,7 +16,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,14 +51,18 @@ namespace App {
                 .AddDefaultUI (UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext> ();
 
-            services.AddMvc ().SetCompatibilityVersion (CompatibilityVersion.Version_2_2);
-
             services.AddAutoMapper (typeof (Startup));
 
             services.AddScoped<MeuDbContext> ();
             services.AddScoped<IProdutoRepository, ProdutoRepository> ();
             services.AddScoped<IEnderecoRepository, EnderecoRepository> ();
             services.AddScoped<IFornecedorRepository, FornecedorRepository> ();
+            services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAdapterProvider> ();
+
+            services.AddMvc (o => {
+                o.ModelBindingMessageProvider.SetValueMustBeANumberAccessor (a => "Deve ser numero");
+                o.ModelBindingMessageProvider.SetValueIsInvalidAccessor (a => "Valor é invalido");
+            }).SetCompatibilityVersion (CompatibilityVersion.Version_2_2);
 
         }
 
@@ -74,6 +82,16 @@ namespace App {
             app.UseCookiePolicy ();
 
             app.UseAuthentication ();
+
+            var defaulCulture = new CultureInfo ("pt-BR");
+
+            var cultureOptions = new RequestLocalizationOptions {
+                DefaultRequestCulture = new RequestCulture (defaulCulture),
+                SupportedCultures = new List<CultureInfo> { defaulCulture },
+                SupportedUICultures = new List<CultureInfo> { defaulCulture }
+            };
+
+            app.UseRequestLocalization (cultureOptions);
 
             app.UseMvc (routes => {
                 routes.MapRoute (

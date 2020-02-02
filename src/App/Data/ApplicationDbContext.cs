@@ -1,16 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using App.ViewModels;
+using Business.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace App.Data
-{
-    public class ApplicationDbContext : IdentityDbContext
-    {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+namespace App.Data {
+    public class ApplicationDbContext : IdentityDbContext {
+        public ApplicationDbContext (DbContextOptions<ApplicationDbContext> options) : base (options) { }
+        public DbSet<App.ViewModels.ProdutoViewModel> ProdutoViewModel { get; set; }
+
     }
 }

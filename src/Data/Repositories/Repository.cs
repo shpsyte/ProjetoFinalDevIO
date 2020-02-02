@@ -14,10 +14,10 @@ namespace Data.Repositories {
         protected readonly MeuDbContext _context;
         protected readonly DbSet<T> _set;
 
-        protected Repository (MeuDbContext context, DbSet<T> set) {
+        protected Repository (MeuDbContext context) {
 
             _context = context;
-            _set = set;
+            _set = _context.Set<T> ();
         }
 
         public async Task Adicionar (T entity) {

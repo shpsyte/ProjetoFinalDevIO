@@ -70,6 +70,9 @@ namespace Data.Migrations
 
                     b.Property<Guid>("FornecedorId");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnName("varchar(100)")

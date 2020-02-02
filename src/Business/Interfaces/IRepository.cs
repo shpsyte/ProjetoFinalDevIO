@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Business.Models;
 
 namespace Business.Interfaces {
-    public interface IRepository<T> : IDisposable where T : Entity {
+    public interface IRepository<T> : IDisposable where T : Entity { 
         Task Adicionar (T entity);
         Task<T> ObterPorId (Guid id);
         Task<IEnumerable<T>> ObterTodos ();

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Repositories {
     public class ProdutoRepository : Repository<Produto>, IProdutoRepository {
-        public ProdutoRepository (MeuDbContext context, DbSet<Produto> set) : base (context, set) { }
+        public ProdutoRepository (MeuDbContext context) : base (context) { }
 
         public async Task<Produto> PegarProdutoPorIdValido (Guid id) {
             return await _set.Where (a => a.Price > 0 && a.Id == id).FirstOrDefaultAsync ();

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Repositories {
     public class FornecedorRepository : Repository<Fornecedor>, IFornecedorRepository {
-        public FornecedorRepository (MeuDbContext context, DbSet<Fornecedor> set) : base (context, set) { }
+        public FornecedorRepository (MeuDbContext context) : base (context) { }
 
         public async Task<Fornecedor> PegarFornecedorValido (Guid id) {
             return await _set.FindAsync (id);
