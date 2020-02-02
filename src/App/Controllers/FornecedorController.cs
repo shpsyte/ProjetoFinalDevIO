@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Controllers {
+    [Route ("admin-fornecedores")]
     public class FornecedorController : BaseController {
 
         protected readonly IFornecedorRepository _fornecedor;
@@ -23,23 +24,27 @@ namespace App.Controllers {
 
         }
 
+        [Route ("lista-de-fornecedores")]
         public async Task<IActionResult> Index () {
             var data = _mapper.Map<IEnumerable<FornecedorViewModel>> (await _fornecedor.PegarTodosFornecedores ());
             return View (data);
         }
 
+        [Route ("detalhes-do-fornecedore/{id:guid}")]
         public async Task<IActionResult> Details (Guid id) {
             var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.ObterPorId (id));
             if (fornecedorViewModel == null) return NotFound ();
             return View (fornecedorViewModel);
         }
 
+        [Route ("criando-um-fornecedor")]
         public IActionResult Create () {
             return View ();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route ("criando-um-fornecedor")]
         public async Task<IActionResult> Create (FornecedorViewModel fornecedorViewModel) {
 
             if (!ModelState.IsValid) return View (fornecedorViewModel);
@@ -50,6 +55,7 @@ namespace App.Controllers {
 
         }
 
+        [Route ("editando-um-fornecedor/{id:guid}")]
         public async Task<IActionResult> Edit (Guid id) {
 
             var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.PegarFornecedorValido (id));
@@ -99,6 +105,7 @@ namespace App.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route ("editando-um-fornecedor/{id:guid}")]
         public async Task<IActionResult> Edit (Guid id, FornecedorViewModel fornecedorViewModel) {
             if (id != fornecedorViewModel.Id) {
                 return NotFound ();
@@ -112,6 +119,7 @@ namespace App.Controllers {
 
         }
 
+        [Route ("excuir-fornecedore/{id:guid}")]
         public async Task<IActionResult> Delete (Guid id) {
 
             var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.ObterPorId (id));
@@ -125,6 +133,7 @@ namespace App.Controllers {
 
         [HttpPost, ActionName ("Delete")]
         [ValidateAntiForgeryToken]
+        [Route ("excuir-fornecedore/{id:guid}")]
         public async Task<IActionResult> DeleteConfirmed (Guid id) {
             var fornecedor = await _fornecedor.ObterPorId (id);
             await _fornecedor.Remover (fornecedor);

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Controllers {
+    [Route ("admin-produtos")]
     public class ProdutoController : BaseController {
 
         private readonly IProdutoRepository _context;
@@ -24,11 +25,13 @@ namespace App.Controllers {
             _fornecedor = fornecedor;
         }
 
+        [Route ("lista-produtos")]
         public async Task<IActionResult> Index () {
             var data = _mapper.Map<IEnumerable<ProdutoViewModel>> (await _context.PegarTodosProdutos ());
             return View (data);
         }
 
+        [Route ("detalhes-produtos/{id:guid}")]
         public async Task<IActionResult> Details (Guid id) {
 
             var produtoViewModel = _mapper.Map<ProdutoViewModel> (await _context.ObterPorId (id));
@@ -40,6 +43,7 @@ namespace App.Controllers {
             return View (produtoViewModel);
         }
 
+        [Route ("criando-produtos")]
         public async Task<IActionResult> Create () {
             ViewData["FornecedorId"] = new SelectList (await _fornecedor.ObterTodos (), "Id", "Name");
             return View ();
@@ -47,6 +51,7 @@ namespace App.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route ("criando-produtos")]
         public async Task<IActionResult> Create (ProdutoViewModel produtoViewModel) {
             ViewData["FornecedorId"] = new SelectList (await _fornecedor.ObterTodos (), "Id", "Name", produtoViewModel.FornecedorId);
 
@@ -77,6 +82,7 @@ namespace App.Controllers {
 
         }
 
+        [Route ("editando-produtos/{id:guid}")]
         public async Task<IActionResult> Edit (Guid id) {
 
             var produtoViewModel = _mapper.Map<ProdutoViewModel> (await _context.ObterPorId (id));
@@ -89,6 +95,7 @@ namespace App.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route ("editando-produtos/{id:guid}")]
         public async Task<IActionResult> Edit (Guid id, ProdutoViewModel produtoViewModel) {
             if (id != produtoViewModel.Id) {
                 return NotFound ();
@@ -122,6 +129,7 @@ namespace App.Controllers {
 
         }
 
+        [Route ("deletando-produtos/{id:guid}")]
         public async Task<IActionResult> Delete (Guid id) {
 
             var produtoViewModel = _mapper.Map<ProdutoViewModel> (await _context.ObterPorId (id));
@@ -135,6 +143,7 @@ namespace App.Controllers {
 
         [HttpPost, ActionName ("Delete")]
         [ValidateAntiForgeryToken]
+        [Route ("deletando-produtos/{id:guid}")]
         public async Task<IActionResult> DeleteConfirmed (Guid id) {
 
             var produto = await _context.ObterPorId (id);
