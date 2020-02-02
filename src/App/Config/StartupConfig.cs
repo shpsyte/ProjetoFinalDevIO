@@ -33,7 +33,7 @@ namespace App.Config {
 
             services.AddScoped<IFornecedorServices, FornecedorServices> ();
             services.AddScoped<IProdutoServices, ProdutoServices> ();
-            services.AddScoped<INotificador, Notificador> (); 
+            services.AddScoped<INotificador, Notificador> ();
 
             services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAdapterProvider> ();
 
@@ -45,6 +45,7 @@ namespace App.Config {
             services.AddMvc (o => {
                 o.ModelBindingMessageProvider.SetValueMustBeANumberAccessor (a => "Deve ser numero");
                 o.ModelBindingMessageProvider.SetValueIsInvalidAccessor (a => "Valor é invalido");
+                o.Filters.Add (new AutoValidateAntiforgeryTokenAttribute ());
             }).SetCompatibilityVersion (CompatibilityVersion.Version_2_2);
 
             return services;
