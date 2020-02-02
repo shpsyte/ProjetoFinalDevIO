@@ -22,7 +22,7 @@ namespace App.Controllers {
         }
 
         public async Task<IActionResult> Index () {
-            var data = _mapper.Map<IEnumerable<FornecedorViewModel>> (await _fornecedor.ObterTodos ());
+            var data = _mapper.Map<IEnumerable<FornecedorViewModel>> (await _fornecedor.PegarTodosFornecedores ());
             return View (data);
         }
 
@@ -50,7 +50,7 @@ namespace App.Controllers {
 
         public async Task<IActionResult> Edit (Guid id) {
 
-            var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.ObterPorId (id));
+            var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.PegarFornecedorValido (id));
             if (fornecedorViewModel == null) {
                 return NotFound ();
             }

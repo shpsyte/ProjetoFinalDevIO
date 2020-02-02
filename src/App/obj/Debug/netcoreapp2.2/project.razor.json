@@ -2966,6 +2966,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Fornecedor/_ListaEndereco.cshtml",
+      "TargetPath": "Views/Fornecedor/_ListaEndereco.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
       "FileKind": "mvc"
@@ -3018,6 +3023,11 @@
     {
       "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Home/Index.cshtml",
       "TargetPath": "Views/Home/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/jose/Data/Cursos/C#/Desenvolvedor/AppCompleta/src/App/Views/Produto/_ListaProdutos.cshtml",
+      "TargetPath": "Views/Produto/_ListaProdutos.cshtml",
       "FileKind": "mvc"
     },
     {
