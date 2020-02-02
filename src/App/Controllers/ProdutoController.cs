@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Data;
+using App.Extensions;
 using App.ViewModels;
 using AutoMapper;
 using Business.Interfaces;
@@ -47,6 +48,7 @@ namespace App.Controllers {
         }
 
         [Route ("criando-produtos")]
+        [ClaimAuthorize ("produto", "add")]
         public async Task<IActionResult> Create () {
             ViewData["FornecedorId"] = new SelectList (await _fornecedor.ObterTodos (), "Id", "Name");
             return View ();
@@ -55,6 +57,7 @@ namespace App.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route ("criando-produtos")]
+        [ClaimAuthorize ("produto", "add")]
         public async Task<IActionResult> Create (ProdutoViewModel produtoViewModel) {
             ViewData["FornecedorId"] = new SelectList (await _fornecedor.ObterTodos (), "Id", "Name", produtoViewModel.FornecedorId);
 
@@ -88,6 +91,7 @@ namespace App.Controllers {
         }
 
         [Route ("editando-produtos/{id:guid}")]
+        [ClaimAuthorize ("produto", "edit")]
         public async Task<IActionResult> Edit (Guid id) {
 
             var produtoViewModel = _mapper.Map<ProdutoViewModel> (await _context.ObterPorId (id));
@@ -101,6 +105,7 @@ namespace App.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route ("editando-produtos/{id:guid}")]
+        [ClaimAuthorize ("produto", "edit")]
         public async Task<IActionResult> Edit (Guid id, ProdutoViewModel produtoViewModel) {
             if (id != produtoViewModel.Id) {
                 return NotFound ();
@@ -132,6 +137,7 @@ namespace App.Controllers {
         }
 
         [Route ("deletando-produtos/{id:guid}")]
+        [ClaimAuthorize ("produto", "del")]
         public async Task<IActionResult> Delete (Guid id) {
 
             var produtoViewModel = _mapper.Map<ProdutoViewModel> (await _context.ObterPorId (id));
@@ -146,6 +152,7 @@ namespace App.Controllers {
         [HttpPost, ActionName ("Delete")]
         [ValidateAntiForgeryToken]
         [Route ("deletando-produtos/{id:guid}")]
+        [ClaimAuthorize ("produto", "del")]
         public async Task<IActionResult> DeleteConfirmed (Guid id) {
 
             var produto = await _context.ObterPorId (id);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Data;
+using App.Extensions;
 using App.ViewModels;
 using AutoMapper;
 using Business.Interfaces;
@@ -41,6 +42,7 @@ namespace App.Controllers {
         }
 
         [Route ("criando-um-fornecedor")]
+        [ClaimAuthorize ("fornecedor", "add")]
         public IActionResult Create () {
             return View ();
         }
@@ -48,6 +50,7 @@ namespace App.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route ("criando-um-fornecedor")]
+        [ClaimAuthorize ("fornecedor", "add")]
         public async Task<IActionResult> Create (FornecedorViewModel fornecedorViewModel) {
 
             if (!ModelState.IsValid) return View (fornecedorViewModel);
@@ -62,6 +65,7 @@ namespace App.Controllers {
         }
 
         [Route ("editando-um-fornecedor/{id:guid}")]
+        [ClaimAuthorize ("fornecedor", "edit")]
         public async Task<IActionResult> Edit (Guid id) {
 
             var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.PegarFornecedorValido (id));
@@ -112,6 +116,7 @@ namespace App.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route ("editando-um-fornecedor/{id:guid}")]
+        [ClaimAuthorize ("fornecedor", "edit")]
         public async Task<IActionResult> Edit (Guid id, FornecedorViewModel fornecedorViewModel) {
             if (id != fornecedorViewModel.Id) {
                 return NotFound ();
@@ -128,6 +133,7 @@ namespace App.Controllers {
         }
 
         [Route ("excuir-fornecedore/{id:guid}")]
+        [ClaimAuthorize ("fornecedor", "del")]
         public async Task<IActionResult> Delete (Guid id) {
 
             var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.PegarFornecedorValido (id));
@@ -142,6 +148,7 @@ namespace App.Controllers {
         [HttpPost, ActionName ("Delete")]
         [ValidateAntiForgeryToken]
         [Route ("excuir-fornecedore/{id:guid}")]
+        [ClaimAuthorize ("fornecedor", "del")]
         public async Task<IActionResult> DeleteConfirmed (Guid id) {
             var fornecedor = await _fornecedor.ObterPorId (id);
             await _fornecedorServices.remover (fornecedor);

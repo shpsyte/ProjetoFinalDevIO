@@ -8,7 +8,7 @@
  
 <vc:Summary></vc:Summary>
 <p>
-    <a class="btn btn-info"  asp-action="Create">Create New</a>
+    <a class="btn btn-info" disable-by-claim-name="fornecedor" disable-by-claim-value="add"  asp-action="Create">Create New</a>
 </p>
 <table class="table table-hover">
     <thead class="thead-dark">
@@ -41,7 +41,9 @@
             <td class="text-right">
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fa fa-search"></i></a> 
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa fa-pencil-alt"></i></a> 
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                <a asp-action="Delete" 
+                disable-by-claim-name="fornecedor" disable-by-claim-value="del" 
+                asp-route-id="@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
 }

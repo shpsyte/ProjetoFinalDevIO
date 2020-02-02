@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using App.AttributeValidations;
 using Microsoft.AspNetCore.Http;
 
@@ -17,6 +18,7 @@ namespace App.ViewModels {
         [Moeda]
         public decimal Price { get; set; }
 
+        [NotMapped]
         public IFormFile ImageUpload { get; set; }
         public string Image { get; set; }
 
