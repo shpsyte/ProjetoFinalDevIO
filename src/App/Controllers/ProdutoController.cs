@@ -8,6 +8,7 @@ using App.ViewModels;
 using AutoMapper;
 using Business.Interfaces;
 using Business.Models;
+using Business.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -19,10 +20,12 @@ namespace App.Controllers {
 
         private readonly IProdutoRepository _context;
         private readonly IFornecedorRepository _fornecedor;
+        private readonly IProdutoServices _produtoService;
 
-        public ProdutoController (IProdutoRepository produto, IFornecedorRepository fornecedor, IMapper mapper) : base (mapper) {
+        public ProdutoController (IProdutoRepository produto, IProdutoServices produtoService, IFornecedorRepository fornecedor, IMapper mapper, INotificador notificador) : base (mapper, notificador) {
             _context = produto;
             _fornecedor = fornecedor;
+            _produtoService = produtoService;
         }
 
         [Route ("lista-produtos")]
@@ -64,7 +67,9 @@ namespace App.Controllers {
 
             if (!ModelState.IsValid) return View (produtoViewModel);
 
-            await _context.Adicionar (_mapper.Map<Produto> (produtoViewModel));
+            await _produtoService.adicionar (_mapper.Map<Produto> (produtoViewModel));
+            if (!OperacaoValida ()) return View (produtoViewModel);
+
             return RedirectToAction (nameof (Index));
 
         }
@@ -119,12 +124,9 @@ namespace App.Controllers {
 
             var produto = _mapper.Map<Produto> (produtoAtualizacao);
 
-            try {
-                await _context.Atualizar (produto);
+            await _produtoService.adicionar (produto);
+            if (!OperacaoValida ()) return View (produtoViewModel);
 
-            } catch (DbUpdateConcurrencyException) {
-                throw;
-            }
             return RedirectToAction (nameof (Index));
 
         }
@@ -147,7 +149,9 @@ namespace App.Controllers {
         public async Task<IActionResult> DeleteConfirmed (Guid id) {
 
             var produto = await _context.ObterPorId (id);
-            await _context.Remover (produto);
+            await _produtoService.remover (produto);
+            TempData["Sucesso"] = "Produto excluido com sucesso";
+
             return RedirectToAction (nameof (Index));
         }
 

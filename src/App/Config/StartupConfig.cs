@@ -4,6 +4,8 @@ using App.AttributeValidations;
 using App.Data;
 using AutoMapper;
 using Business.Interfaces;
+using Business.Notifications;
+using Business.Services;
 using Data.Context;
 using Data.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +30,11 @@ namespace App.Config {
             services.AddScoped<IProdutoRepository, ProdutoRepository> ();
             services.AddScoped<IEnderecoRepository, EnderecoRepository> ();
             services.AddScoped<IFornecedorRepository, FornecedorRepository> ();
+
+            services.AddScoped<IFornecedorServices, FornecedorServices> ();
+            services.AddScoped<IProdutoServices, ProdutoServices> ();
+            services.AddScoped<INotificador, Notificador> (); 
+
             services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAdapterProvider> ();
 
             return services;

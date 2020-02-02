@@ -7,6 +7,7 @@ using App.ViewModels;
 using AutoMapper;
 using Business.Interfaces;
 using Business.Models;
+using Business.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -17,10 +18,12 @@ namespace App.Controllers {
 
         protected readonly IFornecedorRepository _fornecedor;
         protected readonly IEnderecoRepository _endereco;
+        protected readonly IFornecedorServices _fornecedorServices;
 
-        public FornecedorController (IFornecedorRepository fornecedor, IEnderecoRepository endereco, IMapper mapper) : base (mapper) {
+        public FornecedorController (IFornecedorServices fornecedorServices, IFornecedorRepository fornecedor, IEnderecoRepository endereco, IMapper mapper, INotificador notificador) : base (mapper, notificador) {
             _fornecedor = fornecedor;
             _endereco = endereco;
+            _fornecedorServices = fornecedorServices;
 
         }
 
@@ -50,7 +53,10 @@ namespace App.Controllers {
             if (!ModelState.IsValid) return View (fornecedorViewModel);
 
             var fornecedor = _mapper.Map<Fornecedor> (fornecedorViewModel);
-            await _fornecedor.Adicionar (fornecedor);
+            // await _fornecedor.Adicionar (fornecedor);
+            await _fornecedorServices.adicionar (fornecedor);
+            if (!OperacaoValida ()) return View (fornecedorViewModel);
+
             return RedirectToAction (nameof (Index));
 
         }
@@ -114,7 +120,9 @@ namespace App.Controllers {
             if (!ModelState.IsValid) return View (fornecedorViewModel);
 
             var fornecedor = _mapper.Map<Fornecedor> (fornecedorViewModel);
-            await _fornecedor.Atualizar (fornecedor);
+            await _fornecedorServices.atualizar (fornecedor);
+            if (!OperacaoValida ()) return View (fornecedorViewModel);
+
             return RedirectToAction (nameof (Index));
 
         }
@@ -122,7 +130,7 @@ namespace App.Controllers {
         [Route ("excuir-fornecedore/{id:guid}")]
         public async Task<IActionResult> Delete (Guid id) {
 
-            var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.ObterPorId (id));
+            var fornecedorViewModel = _mapper.Map<FornecedorViewModel> (await _fornecedor.PegarFornecedorValido (id));
 
             if (fornecedorViewModel == null) {
                 return NotFound ();
@@ -136,8 +144,10 @@ namespace App.Controllers {
         [Route ("excuir-fornecedore/{id:guid}")]
         public async Task<IActionResult> DeleteConfirmed (Guid id) {
             var fornecedor = await _fornecedor.ObterPorId (id);
-            await _fornecedor.Remover (fornecedor);
+            await _fornecedorServices.remover (fornecedor);
+            if (!OperacaoValida ()) return View (_mapper.Map<FornecedorViewModel> (fornecedor));
 
+            TempData["Sucesso"] = "Fornecedor excluido com sucesso";
             return RedirectToAction (nameof (Index));
         }
 
